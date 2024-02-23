@@ -25,8 +25,15 @@ class Solution:
         for i in range(rows):
             for j in range(cols):
                 coordinates.append([i, j])
-
         return sorted(coordinates, key=lambda x: abs(x[0] - rCenter) + abs(x[1] - cCenter))
+
+
+    def all_cells_dist_order(self, rows: int, cols: int, rCenter: int, cCenter: int) -> list[list[int]]:
+        """
+        A more efficient version of the function
+        """
+        return sorted([[r, c] for r in range(rows) for c in range(cols)], \
+                      key=lambda x: abs(x[0] - rCenter) + abs(x[1] - cCenter))
 
 
 if __name__ == "__main__":
