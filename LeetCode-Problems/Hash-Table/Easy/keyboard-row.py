@@ -17,7 +17,13 @@ class Solution:
         return result
 
 
+    def find_words(self, words: list[str]) -> list[str]:
+        keyboard = [set("qwertyuiop"), set("asdfghjkl"), set("zxcvbnm")]
+        return [word for word in words if any(set(word.lower()).issubset(row) for row in keyboard)]
+
+
 if __name__ == "__main__":
     sol = Solution()
     words = ["Hello", "Alaska", "Dad", "Peace"]
     print(sol.findWords(words))
+    print(sol.find_words(words))
