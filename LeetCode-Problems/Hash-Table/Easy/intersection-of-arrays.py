@@ -1,5 +1,3 @@
-from collections import Counter
-
 class Solution:
     def intersection(self, nums1: list[int], nums2: list[int]) -> list[int]:
         """
@@ -12,14 +10,7 @@ class Solution:
         Returns:
             list[int]: A new array containing the intersection of `nums1` and `nums2`.
         """
-        count1 = Counter(nums1)
-        count2 = Counter(nums2)
-
-        # Update count1 in-place with common elements in count2 and their minimum counts
-        count1 &= count2
-
-        # Extract keys (elements) from the updated Counter
-        return list(count1.keys())
+        return set(nums1) & set(nums2)
 
 
 if __name__ == "__main__":
