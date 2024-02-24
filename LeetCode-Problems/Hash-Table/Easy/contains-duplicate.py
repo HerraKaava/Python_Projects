@@ -28,6 +28,13 @@ class Solution:
         for num in nums:
             num_count[num] = num_count.get(num, 0) + 1
         return not all(val == 1 for (key, val) in num_count.items())
+
+
+    def contains_duplicate2(self, nums: list[int]) -> bool:
+        """
+        A more efficient version of the function than the two previous ones.
+        """
+        return len(set(nums)) != len(nums)
         
 
 if __name__ == "__main__":
