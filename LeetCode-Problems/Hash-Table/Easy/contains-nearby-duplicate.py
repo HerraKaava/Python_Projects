@@ -51,6 +51,27 @@ class Solution:
         return False
 
 
+    def contains_nearby_duplicate(self, nums: list[int], k: int) -> bool:
+        """
+        A solution that uses a slightly different approach to solve the problem.
+        Note that this approach is less efficient.
+        """
+        d = {}
+        for idx, key in enumerate(nums):
+            if key not in d:
+                d[key] = [idx]
+            else:
+                d[key].append(idx)
+
+        for key, val in d.items():
+            if len(val) > 1:
+                for i in range(len(val)-1):
+                    for j in range(i+1, len(val)):
+                        if abs(val[i] - val[j]) <= k:
+                            return True
+        return False
+
+
 if __name__ == "__main__":
     sol = Solution()
     nums1 = [1, 2, 3, 1]
