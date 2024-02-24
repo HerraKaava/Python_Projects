@@ -1,3 +1,5 @@
+from collections import Counter
+
 class Solution:
     def intersect(self, nums1: list[int], nums2: list[int]) -> list[int]:
         """
@@ -11,16 +13,21 @@ class Solution:
             Input: nums1 = [4,9,5], nums2 = [9,4,9,8,4]
             Output: [4,9]
         """
-        intersect_arr = []
-        for num in nums1:
-            if num in nums2:
-                intersect_arr.append(num)
-                nums2.remove(num)
-        return intersect_arr
+        count1 = Counter(nums1)
+        count2 = Counter(nums2)
+
+        # Update count1 to only include the intersection of count1 and count2
+        count1 &= count2
+
+        result = []
+        for key, val in count1.items():
+            result.extend([key] * val)
+
+        return result
 
 
 if __name__ == "__main__":
     sol = Solution()
-    nums1 = [1, 2, 2, 1]
-    nums2 = [2, 2]
+    nums1 = [1, 2, 2, 1, 1, 1, 1]
+    nums2 = [2, 2, 1, 1, 1, 1]
     print(sol.intersect(nums1, nums2))
