@@ -23,31 +23,13 @@ class Solution:
             Input: nums = [1,2,3,1,2,3], k = 2
             Output: false
         """
-        # Initialize a dictionary to store the key-value pairs (element: index of the element)
         d = {}
         for idx, num in enumerate(nums):
-            # If the element (num) is already in the dictionary,
-            # check if the difference between the current index (idx)
-            # and the index of the duplicate value (d[num])
-            # is less than or equal to the threshold (k).
-            if num in d.keys() and abs(idx - d[num]) <= k:
-                # If the condition is met, return True.
+            if num in d and abs(idx - d[num]) <= k:
+                # Duplicate found in the desired range
                 return True
-            else:
-                # If the element is not present in the dictionary,
-                # set the element as the key and the index of the element as the value.
-                d[num] = idx
-        return False
-
-
-    # Uncommented version
-    def containsNearbyDuplicate2(self, nums: list[int], k: int) -> bool:
-        d = {}
-        for idx, num in enumerate(nums):
-            if num in d.keys() and abs(idx - d[num]) <= k:
-                return True
-            else:
-                d[num] = idx
+            # Update the index of the current key
+            d[num] = idx
         return False
 
 
