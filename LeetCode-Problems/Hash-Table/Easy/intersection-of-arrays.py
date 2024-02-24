@@ -1,14 +1,7 @@
 class Solution:
-    def intersection(self, nums1: list[int], nums2: list[int]) -> list[int]:
+    def intersection(self, nums1: list[int], nums2: list[int]) -> set[int]:
         """
-        Given two integer arrays nums1 and nums2, return an array of their intersection.
-
-        Args:
-            nums1 (list[int]): The first integer array.
-            nums2 (list[int]): The second integer array.
-
-        Returns:
-            list[int]: A new array containing the intersection of `nums1` and `nums2`.
+        Given two integer arrays nums1 and nums2, find their intersection.
         """
         return set(nums1) & set(nums2)
 
