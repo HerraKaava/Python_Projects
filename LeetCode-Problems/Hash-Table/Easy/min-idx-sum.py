@@ -1,3 +1,5 @@
+from collections import Counter
+
 class Solution:
     def findRestaurant(self, list1: list[str], list2: list[str]) -> list[str]:
         """
@@ -16,20 +18,15 @@ class Solution:
             - All the strings of list2 are unique.
             - There must be at least one common string between list1 and list2.
         """
-        least_idx_sum = float('inf')
+        intersection = set(list1) & set(list2)
         d = {}
-        for s in list1:
-            if s in list2:
-                idx_sum = list1.index(s) + list2.index(s)
-                if idx_sum <= least_idx_sum:
-                    d[s] = idx_sum
-                    least_idx_sum = idx_sum
-        min_idx = min(d.values())
-        return [key for (key, val) in d.items() if val == min_idx]
+        for word in intersection:
+            d[word] = list1.index(word) + list2.index(word)
+        return [key for (key, val) in d.items() if val == min(d.values())]
 
 
 if __name__ == "__main__":
     sol = Solution()
-    list1 = ["Shogun", "Tapioca Express", "Burger King", "KFC"]
-    list2 = ["KFC", "Shogun", "Burger King"]
+    list1 = ["happy","sad","good"]
+    list2 = ["sad","happy","good"]
     print(sol.findRestaurant(list1, list2))
