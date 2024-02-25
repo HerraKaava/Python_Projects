@@ -25,6 +25,17 @@ class Solution:
         return expected_sum - observed_sum
 
 
+    def missing_num(self, nums: list[int]) -> int:
+        """
+        A more efficient function.
+        """
+        nums_set = {num for num in range(1, len(nums)+1)}
+        for num in nums:
+            if num in nums_set:
+                nums_set.remove(num)
+        return next(iter(nums_set)) if nums_set else 0
+
+
 if __name__ == "__main__":
     sol = Solution()
     nums1 = [3, 0, 1]
