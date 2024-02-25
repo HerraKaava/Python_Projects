@@ -21,16 +21,15 @@ class Solution:
             - All the words in s are separated by a single space.
         """
         def map_to_int(string) -> list[int]:
-            char_to_int = {}
-            counter = 1
+            d = {}
+            counter = 0
             for char in string:
-                if char not in char_to_int:
-                    char_to_int[char] = counter
+                if char not in d:
+                    d[char] = counter
                     counter += 1
-            return [char_to_int[char] for char in string]
-
-        s_splitted = s.split(' ')
-        return map_to_int(pattern) == map_to_int(s_splitted)
+            return [d[char] for char in string]
+            
+        return map_to_int(pattern) == map_to_int(s.split())
 
 
 if __name__ == "__main__":
