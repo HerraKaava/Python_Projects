@@ -28,6 +28,28 @@ class Solution:
         return sum_digits(num)
 
 
+    def add_digits(self, num:int) -> int:
+        """
+        Another implementation.
+        This function is more efficient memory-wise than the one above.
+        """
+        if num <= 1:
+            return num
+
+        def add(num):
+            result = 0
+            digit_list = list(str(num))
+            while digit_list:
+                result += int(digit_list.pop())
+            return result
+
+        sum_digits = add(num)
+        while len(str(sum_digits)) > 1:
+            sum_digits = add(sum_digits)
+
+        return sum_digits
+
+
 if __name__ == "__main__":
     sol = Solution()
     num = 38
