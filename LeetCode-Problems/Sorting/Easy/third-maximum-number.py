@@ -11,11 +11,11 @@ class Solution:
             Input: nums = [1,2]
             Output: 2
         """
-        nums = sorted(list(set(nums)))    # Sort and remove the duplicates
-        if len(nums) < 3:
-            return max(nums)
+        nums = sorted(set(nums), reverse=True)
+        if len(nums) > 2:
+            return nums[2]
         else:
-            return nums[-3]
+            return max(nums)
 
 
 if __name__ == "__main__":
