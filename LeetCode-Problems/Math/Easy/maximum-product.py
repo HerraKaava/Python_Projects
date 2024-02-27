@@ -12,19 +12,22 @@ class Solution:
 
             Input: nums = [-1,-2,-3]
             Output: -6
+
+        Constraints:
+            - 3 <= nums.length <= 104
+            - -1000 <= nums[i] <= 1000
         """
-        if len(nums) < 3:
-            raise ValueError('Length of the integer array must be atleast 3.')
+        if len(nums) == 3:
+            return nums[0] * nums[1] * nums[2]
 
         # The largest product is achieved by either...
         #   1. The product of the three largest numbers.
         #   2. The product of the two smallest numbers and the largest number.
-
         nums.sort()
         product1 = nums[-1] * nums[-2] * nums[-3]
         product2 = nums[0] * nums[1] * nums[-1]
         return max(product1, product2)
-
+    
 
 if __name__ == "__main__":
     sol = Solution()
