@@ -15,6 +15,18 @@ class Solution:
         # zip(*matrix) effectively transposes the rows of the matrix,
         # and row[::-1] reverses the order of each row.
 
+        # m = [[1,2,3],[4,5,6],[7,8,9]].
+        # r1 = [1, 2, 3]
+        # r2 = [4, 5, 6]
+        # r3 = [7, 8, 9]
+
+        # zip(*m) and zip(r1, r2, r3) are equivalent.
+
+        # When you use the * operator with zip(*m), 
+        # it unpacks the nested list m into separate arguments, 
+        # effectively passing each inner list as a separate argument to zip. 
+        # So zip(*m) is equivalent to zip([1, 2, 3], [4, 5, 6], [7, 8, 9]).
+
 
 if __name__ == "__main__":
     sol = Solution()
