@@ -18,41 +18,39 @@ class Solution:
         """
         # Create an empty dictionary to store the key-value pairs
         d = {}
-        for word in strs:
+        for s in strs:
             # To get the unique keys to group the anagrams,
             # one can use the sorted() method together with the join() method.
             # sorted() first creates a list consisting of the individual letters of the word
             # in alphabetical order (e.g., sorted("cat") --> ["a", "c", "t"]),
             # then the join() method concatenates the letters back together
             # (""join.(["a", "c", "t"] --> "act")
-            sorted_word = "".join(sorted(word))
-            if sorted_word not in d:
-                # If the key (sorted_word) is not yet initialized into the dictionary,
-                # initialize its value as an empty list.
-                d[sorted_word] = []
-                # append the unordered original word to the list
-                d[sorted_word].append(word)
+            sorted_str = "".join(sorted(s))
+            if sorted_str not in d:
+                # If the key (sorted_str) is not yet initialized into the dictionary,
+                # initialize its value as a list and append
+                # the unordered original string into it
+                d[sorted_str] = [s]
             else:
                 # If the key is already in the dictionary, append its anagram to it.
-                d[sorted_word].append(word)
+                d[sorted_str].append(s)
         # Since the function needs to return a nested list,
         # one can use e.g. list comprehension on d.values().
         # Note that each value is already its own list,
         # so using list comprehension on the values will return a nested list.
-        return [l for l in d.values()]
+        return [val for val in d.values()]
 
 
     # Uncommented version
     def groupAnagrams2(self, strs: list[str]) -> list[list[str]]:
         d = {}
-        for word in strs:
-            sorted_word = "".join(sorted(word))
-            if sorted_word not in d:
-                d[sorted_word] = []
-                d[sorted_word].append(word)
+        for s in strs:
+            sorted_str = "".join(sorted(s))
+            if sorted_str not in d:
+                d[sorted_str] = [s]
             else:
-                d[sorted_word].append(word)
-        return [l for l in d.values()]
+                d[sorted_str].append(s)
+        return [val for val in d.values()]
 
 
 if __name__ == "__main__":
